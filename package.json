@@ -1,0 +1,51 @@
+{
+  "name": "user-list",
+  "version": "1.0.0",
+  "description": "Insight npm",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrown0926/Insight-Project2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abrown0926/Insight-Project2/issues"
+  },
+  "homepage": "https://github.com/abrown0926/Insight-Project2#readme",
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  }
+}
+
+{
+  "name": "eslint-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint **/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.12.1"
+  }
+}
