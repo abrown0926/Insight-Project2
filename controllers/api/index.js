@@ -1,7 +1,7 @@
 // see activity 18 - cookies for content of this file
 const router = require("express").Router();
 
-const userRoutes = require("./user-routes");
+const userRoutes = require("./userRoutes");
 
 router.use("/users", userRoutes);
 
