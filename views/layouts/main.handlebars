@@ -4,23 +4,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registry</title>
-  <link rel="stylesheet" href="/css/jass.css">
-</head>
+  <title>Santagram</title>
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
 
-<body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      User Registry
-    </h1>
-  </header>
-  <main class="container container-fluid mt-5">
-    <!-- Render the contents of the sub layout here -->
-    {{{ body }}}
-  </main>
-  <footer>
-      
-  </footer>
-</body>
+<div class="login-reg-panel">
+		<div class="login-info-box">
+			<h2>Have an account?</h2>
+			<p>Lorem ipsum dolor sit amet</p>
+			<label id="label-register" for="log-reg-show">Login</label>
+			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+		</div>
+							
+		<div class="register-info-box">
+			<h2>Don't have an account?</h2>
+			<p>Lorem ipsum dolor sit amet</p>
+			<label id="label-login" for="log-login-show">Register</label>
+			<input type="radio" name="active-log-panel" id="log-login-show">
+		</div>
+							
+		<div class="white-panel">
+			<div class="login-show">
+				<h2>LOGIN</h2>
+				<input type="text" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<input type="button" value="Login">
+				<a href="">Forgot password?</a>
+			</div>
+			<div class="register-show">
+				<h2>REGISTER</h2>
+				<input type="text" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<input type="password" placeholder="Confirm Password">
+				<input type="button" value="Register">
+			</div>
+		</div>
+	</div>
+
+  <main>
+      {{{body}}}
+    </main>
+
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+  </body>
 
 </html>
