@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { User, Wishlist } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // code below is only accessible by Santa to see all kids' wishlists
-// router.get("/", (req, res) => {
+// router.get("/", withAuth, async (req, res) => {
 //   // find all wishlists
 //   Wishlist.findAll({
 //     include: [{ model: User, model: Wishlist }],
@@ -14,7 +15,7 @@ const { User, Wishlist } = require("../../models");
 // });
 
 // individual users can only see the wishlist associated with their id
-router.get("/:id", (req, res) => {
+router.get("/wishlist/:id", withAuth, async (req, res) => {
   // find a single wishlist by its `id`
   try {
     Wishlist.findOne({
@@ -23,23 +24,23 @@ router.get("/:id", (req, res) => {
         { model: User, attributes: { exclude: ["email", "password"] } },
       ],
     }).then((wishlistData) => {
-      res.render("wishlist", {
-        users,
-        logged_in: req.session.logged_in,
-      });
+      // is the code below necessary? What does it do?
+      //   res.render("wishlist", {
+      //     users,
+      //     logged_in: req.session.logged_in,
+      //   });
+      res.render("wishlist", wishlistData, { text: "Hello" }); //insert user's first name as part of the greeting
       console.log(wishlistData);
     });
   } catch (err) {
     res.status(500).json(err);
   }
   res.json(wishlistData);
-  console.log(wishlistData);
 });
 
 router.post("/", async (req, res) => {
   try {
     const newWishlist = await Wishlist.create({
-      wishlist_title: req.body.wishlist_title,
       contents: req.body.contents,
       creator: req.body.creator,
       date: req.body.date,
@@ -53,7 +54,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", (req, res) => {
   Wishlist.update(
     {
-      wishlist_title: req.body.wishlist_title,
+      //wishlist_title: req.body.wishlist_title,
       contents: req.body.contents,
       creator: req.body.creator,
       date: req.body.date,
