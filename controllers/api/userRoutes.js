@@ -1,28 +1,43 @@
 // see activity 18 and 20 /api/user-routes for more content of this file
-
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../models");
 
-// CREATE new user
-// router.post("/", async (req, res) => {
-//   try {
-//     const dbUserData = await User.create({
-//       username: req.body.username,
-//       email: req.body.email,
-//       password: req.body.password,
-//     });
-
-//     req.session.save(() => {
-//       req.session.loggedIn = true;
-
-//       res.status(200).json(dbUserData);
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+//create new user
+router.post("/create", async (req, res) => {
+  try {
+    const dbUserData = await User.findOne({
+      where: {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+      },
+    });
+    if (!dbUserData) {
+      const newUser = await User.create({
+        username: req.body.username,
+        // line below may need to be in its own if/else statement
+        email: req.body.email,
+      });
+      console.log(newUser);
+      if (newUser) {
+        req.session.save(() => {
+          req.session.logged_in = true;
+          req.session.username = newUser.username;
+          req.session.email = newUser.email;
+          req.session.password = newUser.password;
+          res.status(200).json({ message: "User created!" });
+        });
+        res.status(200).json(newUser);
+      }
+    } else {
+      res
+        .status(409)
+        .json({ message: "Username and email taken! Please use another." });
+      return;
+    }
+  } catch (err) {}
+});
 
 // Login
 router.post("/login", async (req, res) => {

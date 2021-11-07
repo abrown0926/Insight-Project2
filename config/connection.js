@@ -15,8 +15,10 @@ if (process.env.JAWSDB_URL) {
     {
       host: "localhost",
       dialect: "mysql",
+      database: "user_db",
       port: 3306,
-    }
+    },
+    console.log("Connected to the user_db database.")
   );
 }
 
