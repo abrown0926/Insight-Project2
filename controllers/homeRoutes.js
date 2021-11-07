@@ -26,7 +26,13 @@ router.get("/login", (req, res) => {
     return;
   }
 
+<<<<<<< HEAD
   res.render("login");
+=======
+
+  res.render("login", { text: "Hello World" });
+
+>>>>>>> d582a523fee02fda1b9584ae4665e51fa4ba4f43
 });
 
 module.exports = router;
