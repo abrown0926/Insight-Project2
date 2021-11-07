@@ -6,6 +6,32 @@ const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 //const auth = require("./utils/auth");
 
+const http = require("https");
+const options = {
+  method: "GET",
+  hostname: "danielthepope-countdown-v1.p.rapidapi.com",
+  port: null,
+  path: "/solve/pimgatner?variance=1",
+  headers: {
+    "x-rapidapi-host": "danielthepope-countdown-v1.p.rapidapi.com",
+    "x-rapidapi-key": "901cbaf60cmsh5e5bea7d5f1a8bap1edabajsn89697e7fb7b8",
+    useQueryString: true,
+  },
+};
+
+// create event handler for this on wishlist.handlebars page
+const req = http.request(options, function (res) {
+  const chunks = [];
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+  res.on("end", function () {
+    const body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+});
+
+req.end();
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 

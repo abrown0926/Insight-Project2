@@ -15,6 +15,10 @@ Wishlist.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     contents: {
       type: DataTypes.STRING,
       allowNull: false,
