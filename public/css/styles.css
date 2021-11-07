@@ -1,150 +1,477 @@
-@import url('https://fonts.googleapis.com/css?family=Mukta');
-body{
-  font-family: 'Mukta', sans-serif;
-	height:100vh;
-	min-height:550px;
-	background-image: url(http://www.planwallpaper.com/static/images/Free-Wallpaper-Nature-Scenes.jpg);
-	background-repeat: no-repeat;
-	background-size:cover;
-	background-position:center;
-	position:relative;
-    overflow-y: hidden;
+/* CSS for video */
+* {
+  box-sizing: border-box;
 }
-a{
-  text-decoration:none;
-  color:#444444;
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
 }
-.login-reg-panel{
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-	text-align:center;
-    width:70%;
-	right:0;left:0;
-    margin:auto;
-    height:400px;
-    background-color: rgba(236, 48, 20, 0.9);
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
-.white-panel{
-    background-color: rgba(255,255, 255, 1);
-    height:500px;
-    position:absolute;
-    top:-50px;
-    width:50%;
-    right:calc(50% - 50px);
-    transition:.3s ease-in-out;
-    z-index:0;
-    box-shadow: 0 0 15px 9px #00000096;
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
 }
-.login-reg-panel input[type="radio"]{
-    position:relative;
-    display:none;
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
 }
-.login-reg-panel{
-    color:#B8B8B8;
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* CSS for Santagram to make it glow */
+body {
+  /* background-color: black; */
+  font-family: cursive;
+}
+
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+      0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+/* CSS for ratings */
+body {
+  font-family: Arial;
+  margin: 0 auto; /* Center website */
+  max-width: 800px; /* Max width */
+  padding: 20px;
+}
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+
+.middle {
+  margin-top: 10px;
+  float: left;
+  width: 70%;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {
+  width: 60%;
+  height: 18px;
+  background-color: #04aa6d;
+}
+.bar-4 {
+  width: 30%;
+  height: 18px;
+  background-color: #2196f3;
+}
+.bar-3 {
+  width: 10%;
+  height: 18px;
+  background-color: #00bcd4;
+}
+.bar-2 {
+  width: 4%;
+  height: 18px;
+  background-color: #ff9800;
+}
+.bar-1 {
+  width: 15%;
+  height: 18px;
+  background-color: #f44336;
+}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side,
+  .middle {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+}
+
+/* CSS For Wishlist */
+/* body {
+  margin: 0;
+  min-width: 250px;
+} */
+
+/* Include the padding and border in an element's total width and height */
+/* * {
+  box-sizing: border-box;
+} */
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: "";
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+
+/* CSS Marisol sent over */
+/* @import url("https://fonts.googleapis.com/css?family=Mukta");
+body {
+  font-family: "Mukta", sans-serif;
+  height: 100vh;
+  min-height: 550px;
+  background-image: url(http://www.planwallpaper.com/static/images/Free-Wallpaper-Nature-Scenes.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow-y: hidden;
+}
+a {
+  text-decoration: none;
+  color: #444444;
+}
+.login-reg-panel {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 70%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 400px;
+  background-color: rgba(236, 48, 20, 0.9);
+}
+.white-panel {
+  background-color: rgba(255, 255, 255, 1);
+  height: 500px;
+  position: absolute;
+  top: -50px;
+  width: 50%;
+  right: calc(50% - 50px);
+  transition: 0.3s ease-in-out;
+  z-index: 0;
+  box-shadow: 0 0 15px 9px #00000096;
+}
+.login-reg-panel input[type="radio"] {
+  position: relative;
+  display: none;
+}
+.login-reg-panel {
+  color: #b8b8b8;
 }
 .login-reg-panel #label-login,
-.login-reg-panel #label-register{
-    border:1px solid #9E9E9E;
-    padding:5px 5px;
-    width:150px;
-    display:block;
-    text-align:center;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight: 600;
-    font-size: 18px;
+.login-reg-panel #label-register {
+  border: 1px solid #9e9e9e;
+  padding: 5px 5px;
+  width: 150px;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
 }
-.login-info-box{
-    width:30%;
-    padding:0 50px;
-    top:20%;
-    left:0;
-    position:absolute;
-    text-align:left;
+.login-info-box {
+  width: 30%;
+  padding: 0 50px;
+  top: 20%;
+  left: 0;
+  position: absolute;
+  text-align: left;
 }
-.register-info-box{
-    width:30%;
-    padding:0 50px;
-    top:20%;
-    right:0;
-    position:absolute;
-    text-align:left;
+.register-info-box {
+  width: 30%;
+  padding: 0 50px;
+  top: 20%;
+  right: 0;
+  position: absolute;
+  text-align: left;
 }
-.right-log{right:50px !important;}
+.right-log {
+  right: 50px !important;
+}
 .login-show,
-.register-show{
-    z-index: 1;
-    display:none;
-    opacity:0;
-    transition:0.3s ease-in-out;
-    color:#242424;
-    text-align:left;
-    padding:50px;
+.register-show {
+  z-index: 1;
+  display: none;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  color: #242424;
+  text-align: left;
+  padding: 50px;
 }
-.show-log-panel{
-    display:block;
-    opacity:0.9;
+.show-log-panel {
+  display: block;
+  opacity: 0.9;
 }
-.login-show input[type="text"], .login-show input[type="password"]{
-    width: 100%;
-    display: block;
-    margin:20px 0;
-    padding: 15px;
-    border: 1px solid #B5B5B5;
-    outline: none;
+.login-show input[type="text"],
+.login-show input[type="password"] {
+  width: 100%;
+  display: block;
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #b5b5b5;
+  outline: none;
 }
 .login-show input[type="button"] {
-    max-width: 150px;
-    width: 100%;
-    background: #444444;
-    color: #F9F9F9;
-    border: none;
-    padding: 10px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    float:right;
-    cursor:pointer;
+  max-width: 150px;
+  width: 100%;
+  background: #444444;
+  color: #f9f9f9;
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  float: right;
+  cursor: pointer;
 }
-.login-show a{
-    display:inline-block;
-    padding:10px 0;
+.login-show a {
+  display: inline-block;
+  padding: 10px 0;
 }
-.register-show input[type="text"], .register-show input[type="password"]{
-    width: 100%;
-    display: block;
-    margin:20px 0;
-    padding: 15px;
-    border: 1px solid #B5B5B5;
-    outline: none;
+.register-show input[type="text"],
+.register-show input[type="password"] {
+  width: 100%;
+  display: block;
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #b5b5b5;
+  outline: none;
 }
 .register-show input[type="button"] {
-    max-width: 150px;
-    width: 100%;
-    background: #444444;
-    color: #F9F9F9;
-    border: none;
-    padding: 10px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    float:right;
-    cursor:pointer;
+  max-width: 150px;
+  width: 100%;
+  background: #444444;
+  color: #f9f9f9;
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  float: right;
+  cursor: pointer;
 }
 .credit {
-    position:absolute;
-    bottom:10px;
-    left:10px;
-    color: #3B3B25;
-    margin: 0;
-    padding: 0;
-    font-family: Arial,sans-serif;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    z-index: 99;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #3b3b25;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 99;
 }
-a{
-  text-decoration:none;
-  color:#2c7715;
+a {
+  text-decoration: none;
+  color: #2c7715;
+} */
+
+/* Naughty or Nice Rating Slider */
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
 }
