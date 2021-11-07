@@ -23,13 +23,20 @@ Wishlist.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    users_id: {
+    date: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
+      allowNull: false,
     },
+    nice_status: {
+      type: DataTypes.BOOLEAN,
+    },
+    // users_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "user",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     //     hooks: {

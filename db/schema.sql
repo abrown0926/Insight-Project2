@@ -15,6 +15,5 @@ CREATE TABLE wishlist (
     username VARCHAR(30) NOT NULL,
     contents VARCHAR(1000),
     date INT NOT NULL,
-    nice_status BOOLEAN,
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL
+    nice_status BOOLEAN
 );

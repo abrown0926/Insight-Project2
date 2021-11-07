@@ -3,12 +3,14 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../models");
 
+//create new user
 router.post("/create", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
         username: req.body.username,
         email: req.body.email,
+        password: req.body.password,
       },
     });
     if (!dbUserData) {
@@ -16,13 +18,14 @@ router.post("/create", async (req, res) => {
         username: req.body.username,
         // line below may need to be in its own if/else statement
         email: req.body.email,
-        password: req.body.password,
       });
       console.log(newUser);
       if (newUser) {
         req.session.save(() => {
           req.session.logged_in = true;
-          req.session.user_id = newUser.id;
+          req.session.username = newUser.username;
+          req.session.email = newUser.email;
+          req.session.password = newUser.password;
           res.status(200).json({ message: "User created!" });
         });
         res.status(200).json(newUser);
