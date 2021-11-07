@@ -24,13 +24,13 @@
     "no-trailing-spaces": "error",
     "default-case": "error",
     "no-fallthrough": "error",
-    "no-unused-vars": "error",
     "no-use-before-define": "error",
-    "no-redeclare": "error",
     "brace-style": "error",
     "indent": ["error", 2],
     "quotes": ["error", "double"],
-    "semi": ["error", "always"],
-    "radix": "off"
+    "semi": ["error", "always"]
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
   }
 }

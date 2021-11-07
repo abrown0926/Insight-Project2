@@ -3,6 +3,9 @@ const router = require("express").Router();
 
 const userRoutes = require("./userRoutes");
 
+const commentRoutes = require("./wishlistRoutes");
+
+
 router.use("/users", userRoutes);
 
 module.exports = router;
