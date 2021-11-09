@@ -42,9 +42,10 @@ router.post("/create", async (req, res) => {
 // Login
 router.post("/login", async (req, res) => {
   try {
+    console.log(req.body);
     const dbUserData = await User.findOne({
       where: {
-        email: req.body.email,
+        email: req.body.username,
       },
     });
 
