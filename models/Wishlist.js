@@ -31,13 +31,10 @@ Wishlist.init(
     nice_status: {
       type: DataTypes.BOOLEAN,
     },
-    // users_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //   },
-    // },
+    users_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     //     hooks: {

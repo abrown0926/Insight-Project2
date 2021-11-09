@@ -29,13 +29,12 @@ router.get("/:id", withAuth, async (req, res) => {
       //     users,
       //     logged_in: req.session.logged_in,
       //   });
-      res.render("wishlist", wishlistData, { text: "Hello" }); //insert user's first name as part of the greeting
+      res.render("wishlist", { text: "Hello", wishlistData: wishlistData }); //insert user's first name as part of the greeting
       console.log(wishlistData);
     });
   } catch (err) {
     res.status(400).json(err);
   }
-  res.json(wishlistData);
 });
 
 router.post("/", async (req, res) => {

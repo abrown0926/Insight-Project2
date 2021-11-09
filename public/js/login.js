@@ -31,7 +31,7 @@ const signupFormHandler = async (event) => {
 
   if (username && email && password) {
     console.log(username, email, password);
-    const response = await fetch("/api/userRoutes", {
+    const response = await fetch("/api/users/create", {
       method: "POST",
       body: JSON.stringify({ username, email, password }),
       headers: { "Content-Type": "application/json" },
@@ -40,7 +40,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       const resjson = await response.json();
       console.log(resjson);
-      document.location.replace("/");
+      //    document.location.replace("/");
     } else {
       alert("Failed to sign up.");
     }

@@ -24,12 +24,13 @@ router.post("/create", async (req, res) => {
       if (newUser) {
         req.session.save(() => {
           req.session.logged_in = true;
+          req.session.pk = newUser.id;
           req.session.username = newUser.username;
           req.session.email = newUser.email;
           req.session.password = newUser.password;
-          res.status(200).json({ message: "User created!" });
+          res.status(200).json({ message: "User created!", newUser: newUser });
         });
-        res.status(200).json(newUser);
+        //       res.status(200).json(newUser);
       }
     } else {
       res
@@ -69,6 +70,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.pk = dbUserData.id;
 
       res
         .status(200)
