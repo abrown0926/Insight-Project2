@@ -15,7 +15,7 @@ const withAuth = require("../../utils/auth");
 // });
 
 // individual users can only see the wishlist associated with their id
-router.get("/wishlist/:id", withAuth, async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   // find a single wishlist by its `id`
   try {
     Wishlist.findOne({
@@ -33,7 +33,7 @@ router.get("/wishlist/:id", withAuth, async (req, res) => {
       console.log(wishlistData);
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
   res.json(wishlistData);
 });
@@ -51,24 +51,26 @@ router.post("/", async (req, res) => {
   console.log(newWishlist);
 });
 // update wishlist
-router.put("/:id", (req, res) => {
-  Wishlist.update(
-    {
-      //wishlist_title: req.body.wishlist_title,
-      contents: req.body.contents,
-      creator: req.body.creator,
-      date: req.body.date,
-    },
-    {
-      where: {
-        id: req.params.id,
+
+router.put("/:id", async (req, res) => {
+  try {
+    const wishlist = await Wishlist.update(
+      {
+        contents: req.body.contents,
+        date: req.body.date,
+        nice_status: req.body.nice_status,
       },
-    }
-  )
-    // async await try/catch
-    .catch((err) => {
-      // console.log(err);
-      console.log(err);
-      res.status(400).json(err);
-    });
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(wishlist);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
+
+module.exports = router;

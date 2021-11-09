@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
 
+//homepage
 router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({

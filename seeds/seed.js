@@ -13,6 +13,11 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  await Wishlist.create(wishlistData, {
+    individualHooks: true,
+    returning: true,
+  });
+
   process.exit(0);
 };
 

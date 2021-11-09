@@ -30,6 +30,7 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector("#password-signup").value.trim();
 
   if (username && email && password) {
+    console.log(username, email, password);
     const response = await fetch("/api/userRoutes", {
       method: "POST",
       body: JSON.stringify({ username, email, password }),
@@ -37,6 +38,8 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      const resjson = await response.json();
+      console.log(resjson);
       document.location.replace("/");
     } else {
       alert("Failed to sign up.");

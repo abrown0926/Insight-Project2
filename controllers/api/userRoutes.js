@@ -18,6 +18,7 @@ router.post("/create", async (req, res) => {
         username: req.body.username,
         // line below may need to be in its own if/else statement
         email: req.body.email,
+        password: req.body.password,
       });
       console.log(newUser);
       if (newUser) {
@@ -36,7 +37,9 @@ router.post("/create", async (req, res) => {
         .json({ message: "Username and email taken! Please use another." });
       return;
     }
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Login
