@@ -1,1 +1,2 @@
 #Santagram-Project2
+Hello, and WELCOME to Santagram! You have found the way to connect with Santa before Christmas comes! This app will allow your child to send Santa their wishlist. This app will also allow your child or children to track his or her behavior so that they will know if they are on the naughty or nice list. Last but definitly not least you can track Santa's exact location with our Santa tracker. Sign in with your existing account info or create an account if you are new here! We hope that you and your family enjoy our app!
