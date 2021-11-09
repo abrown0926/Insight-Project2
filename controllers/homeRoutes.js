@@ -1,6 +1,8 @@
+// resposnible for rendering pages depending on the url visited in the browser
 const router = require("express").Router();
 const { User } = require("../models");
 const withAuth = require("../utils/auth");
+const https = require("https");
 
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -13,6 +15,7 @@ router.get("/", withAuth, async (req, res) => {
 
     res.render("homepage", {
       users,
+      someData,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -27,6 +30,20 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.get("/wishlist", (req, res) => {
+  let someData;
+  https
+    .get("api/wishlist/test")
+    .then((v) => {
+      someData = v;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  res.render("wishlist", { someData });
 });
 
 module.exports = router;

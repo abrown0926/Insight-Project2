@@ -1,11 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Wishlist extends Model {
-  //   checkPassword(loginPw) {
-  //     return bcrypt.compareSync(loginPw, this.password);
-  //   }
-}
+class Wishlist extends Model {}
 
 Wishlist.init(
   {
@@ -15,37 +11,32 @@ Wishlist.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     contents: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     date: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     nice_status: {
       type: DataTypes.BOOLEAN,
     },
-    // users_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //   },
-    // },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
   },
   {
-    //     hooks: {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "wishlist",
-    //     },
   }
 );
 
