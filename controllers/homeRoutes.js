@@ -1,21 +1,27 @@
 // resposnible for rendering pages depending on the url visited in the browser
 const router = require("express").Router();
-const { User } = require("../models");
+const { User, Wishlist } = require("../models");
 const withAuth = require("../utils/auth");
-const https = require("https");
 
 router.get("/", withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
-      order: [["name", "ASC"]],
-    });
+    // const userData = await User.findByPk({
+    //   where: { id: req.session.pk },
+    //   include: [{ model: Wishlist }],
+    //   attributes: { exclude: ["password"] },
+    // });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    // const users = userData.get({ plain: true });
+    const users = {
+      id: 1,
+      username: "tony",
+      email: "tony@email.com",
+      password: "12345678",
+    };
+    console.log(users);
 
-    res.render("homepage", {
+    res.render("wishlist", {
       users,
-      someData,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -24,26 +30,26 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/");
-    return;
-  }
+  // if (req.session.logged_in) {
+  //   res.redirect("/");
+  //   return;
+  // }
 
-  res.render("login");
+  // res.render("login");
+  res.render("wishlist");
 });
 
 router.get("/wishlist", (req, res) => {
-  let someData;
-  https
-    .get("api/wishlist/test")
-    .then((v) => {
-      someData = v;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  res.render("wishlist", { someData });
+  // let someData;
+  // https
+  //   .get("api/wishlist/test")
+  //   .then((v) => {
+  //     someData = v;
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  // res.render("wishlist", { someData });
 });
 
 module.exports = router;

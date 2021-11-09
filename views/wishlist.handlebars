@@ -1,23 +1,13 @@
-<div class="wishlist-card">
+<div id="newWishlistForm" class="wishlist-card">
   <div class="card-body">
-    <p>
+    <p class="glow">
       Hello,
-      {{username}}
+      {{users.username}}
     </p>
-    <p>
+    <p class="glow">
       Wishlist
       {{contents}}
     </p>
-    <button id="submitWishlist"></button>
-    <input type="text" id="myvalue" />
-    {{someData}}
-    ????
-
-    {{#if nice_status}}
-      <p class="nice_status">
-        Have you been naughty or nice this week?
-      </p>
-    {{/if}}
   </div>
 </div>
 <script src="/js/wishlist.js"></script>
