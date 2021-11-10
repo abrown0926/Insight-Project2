@@ -1,13 +1,18 @@
 <div id="newWishlistForm" class="wishlist-card">
-  <div class="card-body">
-    <p class="glow">
-      Hello,
-      {{users.username}}
-    </p>
-    <p class="glow">
-      Wishlist
-      {{contents}}
-    </p>
+  <div id="myDIV" class="header">
+    <h2 style="margin:5px">{{users.username}}, create your wishlist to send to
+      Santa</h2>
+    <input type="text" id="myInput" placeholder="Wishlist item..." />
+    <span onclick="newElement({{users.id}})" class="addBtn">Add</span>
   </div>
+
+  <ol id="myUL">
+    <li id="wishlistItem"></li>
+  </ol>
+
 </div>
 <script src="/js/wishlist.js"></script>
+<script>
+  const user_id =
+  {{users.id}}; getWishlist();
+</script>

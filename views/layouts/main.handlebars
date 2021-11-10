@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Santagram homepage</title>
+    <title>Santagram</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -11,24 +11,31 @@
     />
     <link rel="stylesheet" href="/css/styles.css" />
     <style>
-      p {
-        text-align: center;
-        font-size: 60px;
-        margin-top: 100px;
-      }
+      
     </style>
   </head>
 
   <body class="bg">
     <div class="display-flex justify-space-between align-center p-2">
-      <div class="container container-fluid mt-5"></div>
+      {{!-- <div class="container container-fluid mt-5"></div> --}}
+      <p class="logout"><Button id="logout">Logout Button</Button>
+      <a href="/logut" class="logout">Logout</a>
+      </p>
         <h1 class="glow">Santagram</h1> 
-        <p class="glow">Days until Christmas:</p>
+        <p id="body" class="glow">Days until Christmas:</h3>
         <p id="demo" class="glow"></p>      
         {{!-- <p class="glow">The countdown to Christmas is on! Make sure you get your wishlist to Santa!</p>       --}}
-        {{{ body }}}
+        {{!-- {{{ body }}} --}}
       </div>
+      {{#if logged_in}}
+        <nav>
+          <button class="btn" >logout</button>
+        </nav>
+      {{/if}}
+    <div class="container container-fluid mt-5">
+      {{{body}}}
     </div>
+  </div>
   </body>
     <script>
       // Set the date we're counting down to
@@ -61,3 +68,6 @@
     </script>
   </body>
 </html>
+<script src="/js/logout.js"></script>
+
+

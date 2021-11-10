@@ -18,17 +18,19 @@ router.post("/create", async (req, res) => {
         username: req.body.username,
         // line below may need to be in its own if/else statement
         email: req.body.email,
+        password: req.body.password,
       });
       console.log(newUser);
       if (newUser) {
         req.session.save(() => {
           req.session.logged_in = true;
+          req.session.pk = newUser.id;
           req.session.username = newUser.username;
           req.session.email = newUser.email;
           req.session.password = newUser.password;
-          res.status(200).json({ message: "User created!" });
+          res.status(200).json({ message: "User created!", newUser: newUser });
         });
-        res.status(200).json(newUser);
+        //       res.status(200).json(newUser);
       }
     } else {
       res
@@ -36,16 +38,17 @@ router.post("/create", async (req, res) => {
         .json({ message: "Username and email taken! Please use another." });
       return;
     }
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Login
 router.post("/login", async (req, res) => {
   try {
-    console.log(req.body);
     const dbUserData = await User.findOne({
       where: {
-        email: req.body.email,
+        email: req.body.username,
       },
     });
 
@@ -67,6 +70,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.pk = dbUserData.id;
 
       res
         .status(200)
@@ -79,7 +83,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
-router.post("/logout", (req, res) => {
+router.post("/logout", async (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

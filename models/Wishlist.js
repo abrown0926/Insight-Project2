@@ -20,9 +20,6 @@ Wishlist.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    nice_status: {
-      type: DataTypes.BOOLEAN,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
