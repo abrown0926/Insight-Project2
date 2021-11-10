@@ -18,8 +18,8 @@
   <body class="bg">
     <div class="display-flex justify-space-between align-center p-2">
       {{!-- <div class="container container-fluid mt-5"></div> --}}
-      <p class="logout"><Button id="logout">Logout Button</Button>
-      <a href="/logut" class="logout">Logout</a>
+      {{!-- <p class="logout"><Button id="logout">Logout Button</Button> --}}
+      {{!-- <a href="/logut" class="logout">Logout</a> --}}
       </p>
         <h1 class="glow">Santagram</h1> 
         <p id="body" class="glow">Days until Christmas:</h3>
@@ -29,14 +29,14 @@
       </div>
       {{#if logged_in}}
         <nav>
-          <button class="btn" >logout</button>
+         <p class="logout"><Button id="logout">Logout Button</Button>
         </nav>
       {{/if}}
     <div class="container container-fluid mt-5">
       {{{body}}}
     </div>
   </div>
-  </body>
+
     <script>
       // Set the date we're counting down to
       var countDownDate = new Date("Dec 25, 2021").getTime();
@@ -66,8 +66,11 @@
         }
       }, 1000);      
     </script>
+    {{#if logged_in}}
+<script src="/js/logout.js"></script>
+
+    {{/if}}
   </body>
 </html>
-<script src="/js/logout.js"></script>
 
 

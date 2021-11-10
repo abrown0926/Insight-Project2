@@ -4,6 +4,7 @@
       Santa</h2>
     <input type="text" id="myInput" placeholder="Wishlist item..." />
     <span onclick="newElement({{users.id}})" class="addBtn">Add</span>
+    <span>{{users.id}}</span>
   </div>
 
   <ol id="myUL">
@@ -11,8 +12,8 @@
   </ol>
 
 </div>
-<script src="/js/wishlist.js"></script>
 <script>
-  const user_id =
-  {{users.id}}; getWishlist();
+  const user_id = {{users.id}}
+ 
 </script>
+<script src="/js/wishlist.js"></script>

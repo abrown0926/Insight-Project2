@@ -18,6 +18,7 @@ router.get("/login", (req, res) => {
 router.get("/wishlist", async (req, res) => {
   if (req.session.logged_in) {
     try {
+      console.log(req.session, "userid");
       const userData = await User.findOne({
         where: { id: req.session.pk },
         include: [{ model: Wishlist }],
@@ -25,7 +26,7 @@ router.get("/wishlist", async (req, res) => {
       });
       const users = userData.get({ plain: true });
       console.log(users);
-      console.log(userData);
+      console.log(userData, "data");
 
       res.render("wishlist", {
         users,

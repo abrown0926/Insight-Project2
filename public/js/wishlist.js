@@ -1,7 +1,11 @@
+// const user_id = sessionStorage.getItem("user_id")
+
 async function getWishlist() {
   const wishlistItems = await fetch("/api/wishlist/" + user_id).then((res) =>
     res.json()
   );
+
+  console.log(wishlistItems)
 
   clearWishlist();
 
@@ -87,9 +91,10 @@ const addNewItem = function (item, id) {
   document.getElementById("myUL").appendChild(li);
 
   // remove item on wishlist on remove button click
-  span.addEventListener("click", () => {
+  span.addEventListener("click", async () => {
     console.log("We have to remove this item!", id);
     await fetch("/api/wishlist/delete/" + id).then((res) => res.json());
     getWishlist();
   });
 };
+getWishlist()
