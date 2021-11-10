@@ -29,7 +29,6 @@ router.get("/:id", withAuth, async (req, res) => {
       //     users,
       //     logged_in: req.session.logged_in,
       //   });
-      res.render("wishlist", { text: "Hello", wishlistData: wishlistData }); //insert user's first name as part of the greeting
       console.log(wishlistData);
     });
   } catch (err) {
